@@ -16,6 +16,7 @@
       let ballY = 50;
       let ballSpeedX = 10;
       let ballSpeedY = 4;
+      let ballRadius = 10;
 
       let player1Score = 0;
       let player2Score = 0;
@@ -91,7 +92,7 @@
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
-        if (ballX > canvas.width) {
+        if (ballX >= canvas.width - PADDLE_WIDTH) {
           if (ballY > paddle2Y && ballY < paddle2Y + PADDLE_HEIGHT) {
             ballSpeedX = -ballSpeedX;
             let deltaY = ballY - (paddle2Y + PADDLE_HEIGHT / 2);
@@ -102,7 +103,7 @@
             ballReset();
           }
         }
-        if (ballX < 0) {
+        if (ballX <= PADDLE_WIDTH) {
           if (ballY > paddle1Y && ballY < paddle1Y + PADDLE_HEIGHT) {
             ballSpeedX = -ballSpeedX;
             let deltaY = ballY - (paddle1Y + PADDLE_HEIGHT / 2);
@@ -161,7 +162,7 @@
         );
 
         // draw the ball
-        colorCircle(ballX, ballY, 10, "white");
+        colorCircle(ballX, ballY, ballRadius, "white");
 
         canvasContext.fillText(player1Score, 100, 100);
         canvasContext.fillText(player2Score, canvas.width - 100, 100);
