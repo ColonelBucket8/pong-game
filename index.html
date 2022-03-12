@@ -109,7 +109,9 @@
             ballSpeedX = -ballSpeedX;
             let deltaY = ballY - (paddle2Y + PADDLE_HEIGHT / 2);
             ballSpeedY = deltaY * 0.35;
-          } else {
+          }
+
+          if (ballX >= canvas.width) {
             // must be BEFORE ballReset()
             player1Score++;
             ballReset();
@@ -120,7 +122,8 @@
             ballSpeedX = -ballSpeedX;
             let deltaY = ballY - (paddle1Y + PADDLE_HEIGHT / 2);
             ballSpeedY = deltaY * 0.35;
-          } else {
+          }
+          if (ballX <= 0) {
             //
             player2Score++;
             ballReset();
